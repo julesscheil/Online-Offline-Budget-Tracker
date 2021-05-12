@@ -1,11 +1,13 @@
 var CACHE_NAME = "budget-tracker-cache-v1";
-const DATA_CACHE_NAME = "budget-tracker-cache-v1";
+const DATA_CACHE_NAME = "budget-cache-v1";
 
-var urlsToCache = [
+var FileToCache = [
   "/",
-  "/db.js",
+   "/db.js",
+  "index.html",
   "/index.js",
-  "/manifest.json",
+  "/manifest.webmanifest",
+  "service-worker.js",
   "/styles.css",
   "/icons/icon-192x192.png",
   "/icons/icon-512x512.png"
@@ -16,7 +18,7 @@ self.addEventListener("install", function(event) {
   event.waitUntil(
     caches.open(CACHE_NAME).then(function(cache) {
       console.log("Opened cache");
-      return cache.addAll(urlsToCache);
+      return cache.addAll(FileToCache);
     })
   );
 });
